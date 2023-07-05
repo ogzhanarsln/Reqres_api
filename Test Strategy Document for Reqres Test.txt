@@ -1,0 +1,46 @@
+Test Strategy Document for Reqres Test
+
+Introduction
+The purpose of this test strategy document is to outline the testing approach and plan for the API testing of the Reqres Test project. This document will cover the test objectives, selected test types, rationale behind their selection, and details of identified bugs.
+
+Test Objectives
+- Validate the functionality and behavior of the Reqres API endpoints.
+- Identify and report any defects or bugs.
+- Ensure that the API meets the specified requirements.
+- Verify the security, performance, and reliability aspects of the API.
+
+Test Types
+1. Register Successful (POST): This test will verify the successful registration of a user by sending a POST request to the API's register endpoint and validating the expected response.
+
+2. Register Unsuccessful (POST): This test will validate the handling of unsuccessful registration attempts by sending a POST request with invalid data and verifying the expected response.
+
+3. Login Successful (POST): This test will ensure that users can successfully log in by sending a POST request to the API's login endpoint and validating the expected response.
+
+4. Login Unsuccessful (POST): This test will check the handling of unsuccessful login attempts by sending a POST request with incorrect credentials and verifying the expected response.
+
+5. Logout (POST): This test will verify the successful logout functionality by sending a POST request to the API's logout endpoint and validating the expected response.
+
+6. Update (PUT): This test will validate the update functionality by sending a PUT request to the API's update endpoint, modifying user information, and verifying the expected response.
+
+7. Update Unsuccessful (PUT): This test will verify a bug that exists in the system. It will test the handling of an unsuccessful update attempt where the "name" field is updated to an integer value, which is not allowed. The test will send a PUT request with an integer value for the "name" field and verify that the response should be 400 instead of 200.
+
+8. Delete (DELETE): This test will ensure the successful deletion of a user by sending a DELETE request to the API's delete endpoint and validating the expected response.
+
+9. Delete Unsuccessful (DELETE): This test will verify a bug that exists in the system. It will test the handling of an unsuccessful delete attempt with an unavailable user ID. The test will send a DELETE request with an unavailable user ID in the URL and verify that the response should be 404 instead of 200.
+
+Rationale
+The selected test types cover a range of scenarios to validate the functionality, security, and performance of the Reqres API. These tests have been chosen based on the project requirements, identified risks, and industry best practices.
+
+Bug Details
+1. Bug: Update Unsuccessful
+   - Description: The "name" field should only accept a string value, but the API allows updating it to an integer value without returning an appropriate error response.
+   - Expected Behavior: When a user updates the "name" field to an integer value, the response should be 400.
+   - Actual Behavior: The response returns 200 instead of 400.
+
+2. Bug: Delete Unsuccessful
+   - Description: When sending a DELETE request with an unavailable user ID in the URL, the API should return a 404 response to indicate that the user does not exist. However, the API returns a 200 response instead.
+   - Expected Behavior: When the URL contains an unavailable user ID, the response should be 404.
+   - Actual Behavior: The response returns 200 instead of 404.
+
+Conclusion
+The above test strategy outlines the selected test types, their rationale, and the identified bugs for the Reqres Test project. These tests aim to verify the functionality, security, and performance aspects of the API. By addressing the identified bugs and executing the defined test scenarios, we can ensure the quality and reliability of the Reqres API.

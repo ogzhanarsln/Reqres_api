@@ -1,0 +1,72 @@
+Test Scenarios Document for Reqres Test
+
+Register Successful (POST)
+Scenario: Successful registration of a user
+
+Given the user provides valid registration details
+When a POST request is sent to the register endpoint
+Then the user should be successfully registered with a response code 200
+And the response should contain a user ID and token
+
+Register Unsuccessful (POST)
+Scenario: Unsuccessful registration with invalid data
+
+Given the user provides invalid registration details
+When a POST request is sent to the register endpoint
+Then the registration should fail with a response code 400
+And the response should contain an appropriate error message
+
+Login Successful (POST)
+Scenario: Successful login with valid credentials
+
+Given the user provides valid login credentials
+When a POST request is sent to the login endpoint
+Then the user should be successfully logged in with a response code 200
+And the response should contain a user token
+
+Login Unsuccessful (POST)
+Scenario: Unsuccessful login with incorrect credentials
+
+Given the user provides incorrect login credentials
+When a POST request is sent to the login endpoint
+Then the login should fail with a response code 400
+And the response should contain an appropriate error message
+
+Logout (POST)
+Scenario: Successful logout of a user
+
+Given the user is logged in
+When a POST request is sent to the logout endpoint
+Then the user should be successfully logged out with a response code 200
+And the response should contain a success message
+
+Update (PUT)
+Scenario: Successful update of user information
+
+Given the user is logged in
+When a PUT request is sent to the update endpoint with valid updated information
+Then the user information should be successfully updated with a response code 200
+And the response should contain the updated user information
+
+Update Unsuccessful (PUT)
+Scenario: Unsuccessful update of user information with invalid data
+
+Given the user is logged in
+When a PUT request is sent to the update endpoint with an integer value for the "name" field
+Then the update should fail with a response code 400
+And the response should contain an appropriate error message
+
+Delete (DELETE)
+Scenario: Successful deletion of a user
+
+Given the user is logged in
+When a DELETE request is sent to the delete endpoint
+Then the user should be successfully deleted with a response code 204
+
+Delete Unsuccessful (DELETE)
+Scenario: Unsuccessful deletion of a user with an unavailable ID
+
+Given the user is logged in
+When a DELETE request is sent to the delete endpoint with an unavailable user ID
+Then the deletion should fail with a response code 404
+And the response should contain an appropriate error message
